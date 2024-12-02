@@ -1,0 +1,129 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4300,        121]
+NotebookOptionsPosition[      3817,        104]
+NotebookOutlinePosition[      4217,        120]
+CellTagsIndexPosition[      4174,        117]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Function", " ", "to", " ", "calculate", " ", "the", " ", "total", " ", 
+    "distance"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"calculateTotalDistance", "[", "filePath_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "data", ",", "leftList", ",", "rightList", ",", "totalDistance"}], 
+       "}"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Read", " ", "the", " ", "file", " ", "and", " ", "extract", " ", 
+        "the", " ", "two", " ", "columns"}], "*)"}], 
+      RowBox[{
+       RowBox[{"data", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"filePath", ",", "\"\<Table\>\""}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Separate", " ", "the", " ", "two", " ", "columns", " ", "into", " ", 
+         "left", " ", "and", " ", "right", " ", "lists"}], "*)"}], 
+       RowBox[{"leftList", "=", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"rightList", "=", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Sort", " ", "both", " ", "lists"}], "*)"}], 
+       RowBox[{"leftList", "=", 
+        RowBox[{"Sort", "[", "leftList", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"rightList", "=", 
+        RowBox[{"Sort", "[", "rightList", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Calculate", " ", "the", " ", "total", " ", "distance", " ", "by", 
+         " ", "pairing", " ", "corresponding", " ", "elements", " ", "and", 
+         " ", "calculating", " ", "the", " ", "absolute", " ", "difference"}],
+         "*)"}], 
+       RowBox[{"totalDistance", "=", 
+        RowBox[{"Total", "[", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"leftList", "-", "rightList"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Return", " ", "the", " ", "total", " ", "distance"}], "*)"}],
+        "totalDistance"}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Define", " ", "the", " ", "file", " ", "path", " ", "for", " ", "input", 
+     " ", "data"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "filePath", "=", 
+     "\"\<\\\\\\\\vmware-host\\\\Shared \
+Folders\\\\C\\\\advent-of-code-002\\\\input-files\\\\2024\\\\2024-001\\\\\
+input.txt\>\""}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Call", " ", "the", " ", "function", " ", "to", " ", "calculate", " ", 
+     "the", " ", "total", " ", "distance"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"calculateTotalDistance", "[", "filePath", "]"}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.9420914273946247`*^9, 3.942091427395546*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"976d8f0e-0410-d941-a462-eacbd37f9aed"],
+
+Cell[BoxData["2430334"], "Output",
+ CellChangeTimes->{3.9420914301476936`*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"d56fb30d-5579-f449-9415-3e5b1d48493a"]
+}, Open  ]]
+},
+WindowSize->{717, 741},
+WindowMargins->{{Automatic, -5.25}, {Automatic, 0}},
+FrontEndVersion->"14.1 for Microsoft Windows (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8ab474a8-e9b4-504d-af10-204fe5577fd2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 3066, 75, 408, "Input",ExpressionUUID->"976d8f0e-0410-d941-a462-eacbd37f9aed"],
+Cell[3645, 99, 156, 2, 32, "Output",ExpressionUUID->"d56fb30d-5579-f449-9415-3e5b1d48493a"]
+}, Open  ]]
+}
+]
+*)
+
