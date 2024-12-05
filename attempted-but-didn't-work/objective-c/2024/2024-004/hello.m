@@ -1,8 +1,10 @@
-#import <GNUstepBase/GNUstep.h>
+#import <Foundation/Foundation.h>
 
-int main(int argc, const char * argv[]) {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; // Create autorelease pool
-    NSLog(@"Hello, GNUstep!"); // Log a message
-    [pool drain]; // Release the autorelease pool
+int main(int argc, const char *argv[]) {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+    NSLog(@"Hello, Objective-C on Ubuntu!");
+
+    [pool drain];
     return 0;
 }
