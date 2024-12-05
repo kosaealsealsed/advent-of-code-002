@@ -8,16 +8,17 @@
 (define (read-file file-path)
   (with-input-from-file file-path
     (lambda ()
-      (let loop ([lines '()])
+      (let loop ([lines '()]
+                 [eof #f])
         (let ([line (read-line)])
           (if (eof-object? line)
               (apply string-append (reverse lines))
-              (loop (cons (string-append line "\n") lines))))))))
+              (loop (cons (string-append line "\n") lines) #f)))))))
 
 ;; Step 2: Split content into rules and updates sections
 (define (split-sections content)
   (let* ([trimmed (string-trim content)]
-         [sections (regexp-split #rx"\n\n+" trimmed)]) ; Handle multiple newlines
+         [sections (regexp-split #rx"\n\n" trimmed)])
     (values (list-ref sections 0)
             (list-ref sections 1))))
 
@@ -25,23 +26,23 @@
 (define (parse-rules rules-section)
   (map (lambda (line)
          (let* ([parts (string-split line "|")]
-                [x (string->number (string-trim (list-ref parts 0)))]
-                [y (string->number (string-trim (list-ref parts 1)))])
+                [x (string->number (list-ref parts 0))]
+                [y (string->number (list-ref parts 1))])
            (cons x y)))
-       (string-split rules-section "\n")))
+       (string-split-lines rules-section)))
 
 ;; Step 4: Parse updates section into a list of lists
 (define (parse-updates updates-section)
   (map (lambda (line)
          (map string->number (string-split line ",")))
-       (string-split updates-section "\n")))
+       (string-split-lines updates-section)))
 
 ;; Step 5: Check if an update follows the rules
 (define (is-update-ordered update rules)
-  (let ([index-map
-         (for/hash ([page (in-list update)]
-                    [idx (in-naturals)])
-           page idx)])
+  (let* ([index-map
+          (for/hash ([page (in-list update)]
+                     [idx (in-naturals)])
+            page idx)])
     (andmap (lambda (rule)
               (let ([x (car rule)]
                     [y (cdr rule)])
@@ -63,16 +64,14 @@
 ;; Manual Queue Implementation
 ;; -------------------------------
 
-;; A queue is represented as a pair of lists: (front . rear)
+;; A queue is represented as a pair of lists: (front rear)
 (define (make-queue)
   (cons '() '()))
 
-;; Enqueue an element: add to rear
 (define (enqueue! queue element)
-  (cons (car queue) (cons element (cdr queue))))
+  (cons (car queue)
+        (cons element (cdr queue))))
 
-;; Dequeue an element: remove from front
-;; Returns a pair: (dequeued-element . new-queue)
 (define (dequeue! queue)
   (let ([front (car queue)]
         [rear (cdr queue)])
@@ -86,7 +85,6 @@
       [else
        (error "Queue is empty")])))
 
-;; Check if the queue is empty
 (define (queue-empty? queue)
   (and (null? (car queue))
        (null? (cdr queue))))
