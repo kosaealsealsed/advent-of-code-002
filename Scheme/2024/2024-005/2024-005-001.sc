@@ -1,0 +1,81 @@
+(define (read-file file-path)
+  (call-with-input-file file-path
+    (lambda (input)
+      (let loop ((lines '()))
+        (let ((line (read-line input 'eof)))
+          (if (eof-object? line)
+              (reverse lines)
+              (loop (cons line lines))))))))
+
+(define (parse-rules-and-updates content)
+  (let* ((sections (string-split content "\n\n"))
+         (rules-section (car sections))
+         (updates-section (cadr sections))
+         (rules (map (lambda (line)
+                       (let* ((parts (string-split line "|"))
+                              (x (string->number (car parts)))
+                              (y (string->number (cadr parts))))
+                         (list x y)))
+                     (string-split rules-section "\n")))
+         (updates (map (lambda (line)
+                         (map string->number (string-split line ",")))
+                       (string-split updates-section "\n"))))
+    (list rules updates)))
+
+(define (make-index-map update)
+  (let loop ((remaining update)
+             (index 0)
+             (index-map '()))
+    (if (null? remaining)
+        index-map
+        (loop (cdr remaining)
+              (+ index 1)
+              (cons (cons (car remaining) index) index-map)))))
+
+(define (is-update-ordered update rules)
+  (let ((index-map (make-index-map update)))
+    (let loop ((rules rules))
+      (if (null? rules)
+          #t
+          (let ((rule (car rules)))
+            (let ((x (car rule))
+                  (y (cadr rule)))
+              (if (and (assoc x index-map) (assoc y index-map))
+                  (let ((ix (cdr (assoc x index-map)))
+                        (iy (cdr (assoc y index-map))))
+                    (if (> ix iy)
+                        #f
+                        (loop (cdr rules))))
+                  (loop (cdr rules)))))))))
+
+(define (middle-element lst)
+  (list-ref lst (quotient (length lst) 2)))
+
+(define (calculate-middle-pages updates rules)
+  (let loop ((remaining updates)
+             (correct-updates '())
+             (middle-pages '()))
+    (if (null? remaining)
+        (list correct-updates (apply + middle-pages))
+        (let ((update (car remaining)))
+          (if (is-update-ordered update rules)
+              (loop (cdr remaining)
+                    (cons update correct-updates)
+                    (cons (middle-element update) middle-pages))
+              (loop (cdr remaining)
+                    correct-updates
+                    middle-pages))))))
+
+;; Main procedure
+(define file-path "/uploads/input.txt")
+(define content (string-join (read-file file-path) "\n"))
+(define parsed-data (parse-rules-and-updates content))
+(define rules (car parsed-data))
+(define updates (cadr parsed-data))
+
+(define result (calculate-middle-pages updates rules))
+(define correct-updates (car result))
+(define sum-middle-pages (cadr result))
+
+;; Print the result
+(display "Sum of middle pages: ") (display sum-middle-pages) (newline)

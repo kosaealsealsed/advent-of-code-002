@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     14238,        381]
-NotebookOptionsPosition[     13618,        361]
-NotebookOutlinePosition[     14024,        377]
-CellTagsIndexPosition[     13981,        374]
+NotebookDataLength[     14287,        382]
+NotebookOptionsPosition[     13665,        362]
+NotebookOutlinePosition[     14071,        378]
+CellTagsIndexPosition[     14028,        375]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,29 +33,28 @@ Cell[BoxData[
      "\"\<Z:\\\\C\\\\advent-of-code-002\\\\Wolfram\\\\2024\\\\2024-004\\\\\
 input.txt\>\""}], ";"}], "\n", 
    RowBox[{
-    RowBox[{"targetWord", "=", "\"\<XMAS\>\""}], ";"}], "\n", 
-   "\[IndentingNewLine]", 
+    RowBox[{"targetWord", "=", "\"\<XMAS\>\""}], ";"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Read", " ", "the", " ", "file", " ", "and", " ", "store", " ", "the", 
-     " ", "grid"}], "*)"}], "\[IndentingNewLine]", 
+     " ", "grid"}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"grid", "=", 
      RowBox[{"StringSplit", "[", 
       RowBox[{
        RowBox[{"Import", "[", "filePath", "]"}], ",", "\"\<\\n\>\""}], 
-      "]"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Convert", " ", "grid", " ", "to", " ", "character", " ", "matrix", " ", 
-     "for", " ", "easier", " ", "indexing"}], "*)"}], "\[IndentingNewLine]", 
+     "for", " ", "easier", " ", "indexing"}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"grid", "=", 
-     RowBox[{"Characters", "/@", "grid"}]}], ";"}], "\n", 
+     RowBox[{"Characters", "/@", "grid"}]}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{"(*", 
-    RowBox[{"Define", " ", "grid", " ", "dimensions"}], "*)"}], 
-   "\[IndentingNewLine]", 
+    RowBox[{"Define", " ", "grid", " ", "dimensions"}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"rows", "=", 
      RowBox[{"Length", "[", "grid", "]"}]}], ";"}], "\n", 
@@ -63,7 +62,7 @@ input.txt\>\""}], ";"}], "\n",
     RowBox[{"cols", "=", 
      RowBox[{"Length", "[", 
       RowBox[{"grid", "[", 
-       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\n", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
@@ -73,7 +72,7 @@ input.txt\>\""}], ";"}], "\n",
       RowBox[{"right", ",", "down", ",", 
        RowBox[{"diagonal", "-", "right", "-", "down"}], ",", 
        RowBox[{"diagonal", "-", "left", "-", "down"}], ",", 
-       RowBox[{"etc", "."}]}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"etc", "."}]}], ")"}]}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"directions", "=", 
      RowBox[{"{", 
@@ -112,12 +111,12 @@ input.txt\>\""}], ";"}], "\n",
          RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "   ", 
       RowBox[{"(*", 
        RowBox[{"Diagonal", "-", "right", "-", "up"}], "*)"}], "}"}]}], ";"}], 
-   "\n", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "check", " ", "if", " ", "a", " ", "word", 
      " ", "exists", " ", "in", " ", "a", " ", "given", " ", "direction"}], 
-    "*)"}], "\[IndentingNewLine]", 
+    "*)"}], "\n", 
    RowBox[{
     RowBox[{"checkWord", "[", 
      RowBox[{
@@ -161,12 +160,12 @@ input.txt\>\""}], ";"}], "\n",
             RowBox[{
              RowBox[{"exists", "=", "False"}], ";", "\[IndentingNewLine]", 
              RowBox[{"Break", "[", "]"}], ";"}]}], "]"}]}]}], "]"}], ";", 
-       "\[IndentingNewLine]", "exists"}]}], "]"}]}], "\n", 
+       "\[IndentingNewLine]", "exists"}]}], "]"}]}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Count", " ", "all", " ", "occurrences", " ", "of", " ", "the", " ", 
-     "target", " ", "word"}], "*)"}], "\[IndentingNewLine]", 
+     "target", " ", "word"}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"count", "=", "0"}], ";"}], "\n", 
    RowBox[{"Do", "[", 
@@ -195,15 +194,15 @@ input.txt\>\""}], ";"}], "\n",
        RowBox[{"{", 
         RowBox[{"c", ",", "cols"}], "}"}]}], "]"}], ",", 
      RowBox[{"{", 
-      RowBox[{"r", ",", "rows"}], "}"}]}], "]"}], "\[IndentingNewLine]", "\n", 
+      RowBox[{"r", ",", "rows"}], "}"}]}], "]"}], "\n", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"Print", "[", 
      RowBox[{"\"\<count is \>\"", ",", "count", ",", "\"\<.\>\""}], "]"}], 
-    ";"}], "\n", "\[IndentingNewLine]", 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
      RowBox[{"Function", " ", "to", " ", "count", " ", "all", " ", "X"}], "-", 
-     RowBox[{"MAS", " ", "patterns"}]}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"MAS", " ", "patterns"}]}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"countAllXMASPatterns", "[", 
      RowBox[{"grid_", ",", "rows_", ",", "cols_"}], "]"}], ":=", 
@@ -314,13 +313,13 @@ input.txt\>\""}], ";"}], "\n",
          RowBox[{"{", 
           RowBox[{"r", ",", "2", ",", 
            RowBox[{"rows", "-", "1"}]}], "}"}]}], "]"}], ";", 
-       "\[IndentingNewLine]", "count"}]}], "]"}]}], "\n", 
+       "\[IndentingNewLine]", "count"}]}], "]"}]}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
      RowBox[{"Count", " ", "the", " ", "X"}], "-", 
      RowBox[{"MAS", " ", "patterns", " ", "in", " ", "the", " ", "grid"}]}], 
-    "*)"}], "\[IndentingNewLine]", 
+    "*)"}], "\n", 
    RowBox[{
     RowBox[{"totalXMASPatterns", "=", 
      RowBox[{"countAllXMASPatterns", "[", 
@@ -331,7 +330,7 @@ input.txt\>\""}], ";"}], "\n",
      "\"\<total xmas patterns is \>\"", ",", "totalXMASPatterns", ",", 
       "\"\<.\>\""}], "]"}], ";"}], "\n"}]}]], "Input",
  CellChangeTimes->{{3.9423430541013794`*^9, 3.9423430743824863`*^9}},
- CellLabel->"In[64]:=",ExpressionUUID->"54d09541-0bf9-4b4f-99d2-ad5c7cd92376"],
+ CellLabel->"In[1]:=",ExpressionUUID->"54d09541-0bf9-4b4f-99d2-ad5c7cd92376"],
 
 Cell[CellGroupData[{
 
@@ -341,10 +340,11 @@ Cell[BoxData[
    "\[InvisibleSpace]", "\<\".\"\>"}],
   SequenceForm["count is ", 2639, "."],
   Editable->False]], "Print",
- CellChangeTimes->{{3.9423430557176857`*^9, 3.942343084526655*^9}},
+ CellChangeTimes->{{3.9423430557176857`*^9, 3.942343084526655*^9}, 
+   3.9424054969754925`*^9},
  CellLabel->
   "During evaluation of \
-In[64]:=",ExpressionUUID->"fc56113f-b2fe-7e48-b02c-81b2ba028cad"],
+In[1]:=",ExpressionUUID->"b49a1f47-09f0-764a-bdf9-5df6fb913bd4"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -352,10 +352,11 @@ Cell[BoxData[
    "\[InvisibleSpace]", "\<\".\"\>"}],
   SequenceForm["total xmas patterns is ", 2005, "."],
   Editable->False]], "Print",
- CellChangeTimes->{{3.9423430557176857`*^9, 3.9423430846177387`*^9}},
+ CellChangeTimes->{{3.9423430557176857`*^9, 3.942343084526655*^9}, 
+   3.9424054970654964`*^9},
  CellLabel->
   "During evaluation of \
-In[64]:=",ExpressionUUID->"e9eb9f44-5199-e543-8265-2f75cbb1fdd0"]
+In[1]:=",ExpressionUUID->"14b113f9-b303-eb4a-b259-61fca68676c2"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -377,10 +378,10 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 12204, 311, 1322, "Input",ExpressionUUID->"54d09541-0bf9-4b4f-99d2-ad5c7cd92376"],
+Cell[576, 22, 12199, 310, 1322, "Input",ExpressionUUID->"54d09541-0bf9-4b4f-99d2-ad5c7cd92376"],
 Cell[CellGroupData[{
-Cell[12805, 337, 376, 9, 22, "Print",ExpressionUUID->"fc56113f-b2fe-7e48-b02c-81b2ba028cad"],
-Cell[13184, 348, 406, 9, 22, "Print",ExpressionUUID->"e9eb9f44-5199-e543-8265-2f75cbb1fdd0"]
+Cell[12800, 336, 403, 10, 22, "Print",ExpressionUUID->"b49a1f47-09f0-764a-bdf9-5df6fb913bd4"],
+Cell[13206, 348, 431, 10, 22, "Print",ExpressionUUID->"14b113f9-b303-eb4a-b259-61fca68676c2"]
 }, Open  ]]
 }, Open  ]]
 }
