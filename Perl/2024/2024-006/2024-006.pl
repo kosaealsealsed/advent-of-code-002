@@ -22,7 +22,7 @@ my @DIRECTION_OFFSETS = (
 
 # Entry point
 sub main {
-    my $file_path = "input.txt"; # Specify the path to your input file here
+    my $file_path = "\\\\vmware-host\\Shared Folders\\C\\advent-of-code-002\\input-files\\2024\\2024-006\\input.txt"; # Specify the path to your input file here
     eval {
         # Part 1: Count distinct positions visited without obstructions
         my $distinct_positions = count_distinct_positions_visited($file_path);
