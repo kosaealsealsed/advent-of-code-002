@@ -168,7 +168,7 @@ import java.util.stream.Collectors;
  * Disk compaction utility that parses, compacts, and calculates checksums for a
  * disk map.
  */
-public class DiskCompactor {
+public class DiskCompactorBroken {
 
 	/**
 	 * Parses the disk map into a list of blocks.
