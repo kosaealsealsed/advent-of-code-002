@@ -1,0 +1,4 @@
+Write a Python program that reads input.txt and computes the result. Take optimization into account. Make the program print how long it took to run like 1.234 567 890 s. So nanosecond precision.
+
+The file input.txt contains
+
