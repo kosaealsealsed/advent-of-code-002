@@ -1,1 +1,0 @@
-I solved this, but I have yet to come up with an optimized version for 75 instead of 25. I have yet to come up with an optimized version that works for 75.
